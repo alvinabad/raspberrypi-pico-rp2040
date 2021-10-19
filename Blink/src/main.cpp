@@ -32,7 +32,7 @@
 
 #include "Arduino.h"
 
-#define DELAY           1000
+#define DELAY           200
 
 // the setup function runs once when you press reset or power the board
 void setup() {
