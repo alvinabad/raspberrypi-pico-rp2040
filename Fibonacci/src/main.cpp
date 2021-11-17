@@ -28,6 +28,7 @@
 
 #include <Arduino.h>
 #include <SPI.h>
+#include <Board_Identify.h>
 
 #define MAXLEN		1024
 #define MAXSIZE		4096
@@ -35,10 +36,23 @@
 unsigned long fib(unsigned int n);
 void run();
 
+void show_board_info() {
+    Serial.print(F("Board Type: "));
+    Serial.println(BoardIdentify::type);
+    Serial.print(F("Board Make: "));
+    Serial.println(BoardIdentify::make);
+    Serial.print(F("Board Model: "));
+    Serial.println(BoardIdentify::model);
+    Serial.print(F("Board MCU: "));
+    Serial.println(BoardIdentify::mcu);
+}
+
 // the setup function runs once when you press reset or power the board
 void setup() {
     Serial.begin(115200);
     delay(2000);
+
+    show_board_info();
     run();
     Serial.println("ALL DONE.");
 }
